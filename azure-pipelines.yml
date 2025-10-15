@@ -1,0 +1,31 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '18.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    npm ci
+    npm run build
+    npm run build-storybook
+  displayName: 'Install deps & build vite + storybook'
+
+# Publicar build de Vite
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: 'dist'
+    ArtifactName: 'vite-dist'
+    publishLocation: 'Container'
+
+# Publicar build de Storybook
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: 'storybook-static'
+    ArtifactName: 'storybook-dist'
+    publishLocation: 'Container'

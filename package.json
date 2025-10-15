@@ -1,0 +1,33 @@
+{
+  "name": "@consalud/consalud-ui",
+  "private": false,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Librería de componentes UI y storybook de Consalud",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build --config vite.config.ts",
+    "build:lib": "vite build --config vite.config.lib.ts",
+    "preview": "vite preview",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "devDependencies": {
+    "@storybook/react-vite": "^8.6.14",
+    "@storybook/test": "^8.6.14",
+    "@types/react": "^19.1.1",
+    "@types/react-dom": "^19.1.1",
+    "storybook": "^8.6.14",
+    "typescript": "~5.8.3",
+    "vite": "^6.3.6"
+  },
+  "dependencies": {
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  }
+}
