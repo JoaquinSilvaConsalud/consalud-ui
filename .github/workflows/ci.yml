@@ -33,6 +33,9 @@ jobs:
         with:
           node-version: '18.x'
 
+      - name: Remove package-lock.json to force dependency resolution
+        run: rm package-lock.json
+
       - name: Install dependencies
         run: npm install --force
 
