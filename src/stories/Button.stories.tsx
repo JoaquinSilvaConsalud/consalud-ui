@@ -1,4 +1,3 @@
-import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import { Button } from '../components/Button';
@@ -86,6 +85,7 @@ export const Loading: Story = {
 };
 
 export const AllVariantsAndSizes: Story = {
+  args: {},
   render: () => (
     <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', flexDirection: 'column' }}>
       <Button variant="primary">Primary</Button>
