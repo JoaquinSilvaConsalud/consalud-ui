@@ -1,48 +1,55 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { Input } from '../components/Input';
-
+import type { Meta, StoryObj } from "@storybook/react";
+import { Input } from "../components/Input/Input";
 
 const EyeIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+  >
     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
     <circle cx="12" cy="12" r="3" />
   </svg>
 );
 
 const meta = {
-  title: 'Consalud/Input',
+  title: "Consalud/Input",
   component: Input,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
     docs: {
       description: {
-        component: 'Componente Input base de Consalud con diferentes tamaños, estados y configuraciones.',
+        component:
+          "Componente Input base de Consalud con diferentes tamaños, estados y configuraciones.",
       },
     },
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     size: {
-      control: 'select',
-      options: ['small', 'medium', 'large'],
+      control: "select",
+      options: ["small", "medium", "large"],
     },
     type: {
-      control: 'select',
-      options: ['text', 'email', 'password', 'number', 'tel', 'url'],
+      control: "select",
+      options: ["text", "email", "password", "number", "tel", "url"],
     },
     disabled: {
-      control: 'boolean',
+      control: "boolean",
     },
     required: {
-      control: 'boolean',
+      control: "boolean",
     },
     invalid: {
-      control: 'boolean',
+      control: "boolean",
     },
   },
   decorators: [
     (Story) => (
-      <div style={{ width: '300px' }}>
+      <div style={{ width: "300px" }}>
         <Story />
       </div>
     ),
@@ -54,68 +61,73 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    placeholder: 'Enter text...',
+    placeholder: "Enter text...",
   },
 };
 
 export const WithLabel: Story = {
   args: {
-    label: 'Email',
-    placeholder: 'Enter your email',
-    type: 'email',
+    label: "Email",
+    placeholder: "Enter your email",
+    type: "email",
   },
 };
 
 export const Required: Story = {
   args: {
-    label: 'Password',
-    type: 'password',
+    label: "Password",
+    type: "password",
     required: true,
-    placeholder: 'Enter your password',
+    placeholder: "Enter your password",
   },
 };
 
 export const WithError: Story = {
   args: {
-    label: 'Email',
-    type: 'email',
-    error: 'Please enter a valid email address',
-    placeholder: 'Enter your email',
-    defaultValue: 'invalid-email',
+    label: "Email",
+    type: "email",
+    error: "Please enter a valid email address",
+    placeholder: "Enter your email",
+    defaultValue: "invalid-email",
   },
 };
 
 export const WithHelperText: Story = {
   args: {
-    label: 'Username',
-    helperText: 'Must be at least 3 characters long',
-    placeholder: 'Enter username',
+    label: "Username",
+    helperText: "Must be at least 3 characters long",
+    placeholder: "Enter username",
   },
 };
 
-
 export const WithIcon: Story = {
   args: {
-    label: 'Password',
-    type: 'password',
-    placeholder: 'Enter password',
+    label: "Password",
+    type: "password",
+    placeholder: "Enter password",
     icon: <EyeIcon />,
   },
 };
 
-
 export const Disabled: Story = {
   args: {
-    label: 'Disabled Input',
-    placeholder: 'This is disabled',
+    label: "Disabled Input",
+    placeholder: "This is disabled",
     disabled: true,
-    defaultValue: 'Cannot edit this',
+    defaultValue: "Cannot edit this",
   },
 };
 
 export const AllSizes: Story = {
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '300px' }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "1rem",
+        width: "300px",
+      }}
+    >
       <Input size="small" label="Small" placeholder="Small input" />
       <Input size="medium" label="Medium" placeholder="Medium input" />
       <Input size="large" label="Large" placeholder="Large input" />

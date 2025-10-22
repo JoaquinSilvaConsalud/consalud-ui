@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
-import { Button } from '../components/Button';
+import { Button } from '../components/Button/Button';
 
 const meta = {
   title: 'Consalud/Button',
@@ -46,6 +46,7 @@ export const Primary: Story = {
 export const Secondary: Story = {
   args: {
     children: 'Button',
+    variant: 'secondary',
   },
 };
 
@@ -54,6 +55,11 @@ export const Inverted: Story = {
     variant: 'inverted',
     children: 'Button',
   },
+  render: () => (
+    <div style={{ backgroundColor: '#111827', padding: '1rem', margin: 'auto' }}>
+      <Button variant="inverted">Inverted</Button>
+    </div>
+  ),
 };
 
 export const Large: Story = {
@@ -86,13 +92,13 @@ export const Loading: Story = {
 
 export const AllVariantsAndSizes: Story = {
   args: {
-    children: 'Button', // Añadimos un valor por defecto para satisfacer a TypeScript
+    children: 'Button',
   },
   render: () => (
     <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', flexDirection: 'column' }}>
       <Button variant="primary">Primary</Button>
       <Button variant="secondary">Secondary</Button>
-      <div style={{ backgroundColor: 'var(--consalud-gray-700)', padding: '1rem', margin: 'auto' }}>
+      <div style={{ backgroundColor: '#111827', padding: '1rem', margin: 'auto' }}>
 
         <Button variant="inverted">Inverted</Button>
       </div>

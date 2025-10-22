@@ -1,0 +1,122 @@
+:root {
+  --blanco: var(--consalud-white, #ffffff);
+  --morado-ligero: var(--consalud-purple-100, #e4e6fd);
+  --gris-medio: var(--consalud-gray-500, #656565);
+  /* misma fuente que CheckBox */
+  --cs-font: var(
+    --consalud-font-body,
+    "Source Sans Pro",
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    Arial
+  );
+}
+
+.parent-tooltip {
+  position: relative;
+}
+
+.tooltip-component {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  pointer-events: auto;
+  z-index: 0;
+}
+
+.tooltip-component .tooltip-container {
+  display: none;
+  position: absolute;
+  z-index: 4;
+  opacity: 1;
+  transition: opacity 0.2s;
+  width: fit-content;
+  min-width: 15rem;
+  background-color: var(--blanco);
+  border: 2px solid var(--morado-ligero);
+  color: var(--gris-medio);
+  text-align: left;
+  border-radius: 1rem;
+  padding: 0.8rem;
+  top: 2.2rem;
+  font: 400 14px/1.2 var(--cs-font);
+}
+.tooltip-component .tooltip-container::before,
+.tooltip-component .tooltip-container::after {
+  content: "";
+  position: absolute;
+  top: -2.6rem;
+  width: 0;
+  height: 0;
+  background: transparent;
+  border-top: 1.2rem solid transparent;
+  border-right: 0.7rem solid transparent;
+  border-left: 0.7rem solid transparent;
+  border-bottom: 1.3rem solid var(--morado-ligero);
+}
+
+.tooltip-component .tooltip-container::after {
+  top: -2.3rem;
+  border-bottom: 1.3rem solid var(--blanco);
+}
+
+.tooltip-component:hover .tooltip-container {
+  display: flex;
+}
+
+.tooltip-component .tooltip-container.left {
+  right: -1.1rem;
+}
+.tooltip-component .tooltip-container.left::before,
+.tooltip-component .tooltip-container.left::after {
+  right: 1rem;
+}
+
+/* right */
+.tooltip-component .tooltip-container.right {
+  left: -1.5rem;
+  top: 3rem;
+}
+.tooltip-component .tooltip-container.right::before,
+.tooltip-component .tooltip-container.right::after {
+  left: 1.6rem;
+}
+
+.tooltip-component .tooltip-container.midle {
+  left: -6rem;
+}
+.tooltip-component .tooltip-container.midle::before,
+.tooltip-component .tooltip-container.midle::after {
+  left: 5.9rem;
+}
+
+@media (max-width: 992px) {
+  .tooltip-component .tooltip-container.mobile-left {
+    right: -1.1rem;
+    top: 2.1rem;
+  }
+  .tooltip-component .tooltip-container.mobile-left::before,
+  .tooltip-component .tooltip-container.mobile-left::after {
+    right: 1rem;
+  }
+
+  .tooltip-component .tooltip-container.mobile-right {
+    left: -1.5rem;
+    top: 2.1rem;
+  }
+  .tooltip-component .tooltip-container.mobile-right::before,
+  .tooltip-component .tooltip-container.mobile-right::after {
+    left: 1.6rem;
+  }
+
+  .tooltip-component .tooltip-container.mobile-midle {
+    left: -6rem;
+    top: 2.1rem;
+  }
+  .tooltip-component .tooltip-container.mobile-midle::before,
+  .tooltip-component .tooltip-container.mobile-midle::after {
+    left: 5.9rem;
+  }
+}

@@ -1,0 +1,81 @@
+:root {
+  --sp-accent: var(--verde-primario, var(--consalud-teal-500, #00cbbf));
+  --sp-track: var(--consalud-gray-300, #d0d0d0);
+  --sp-text: var(--consalud-gray-900, #111111);
+  --sp-speed: 2000ms;
+  --cs-font: var(
+    --consalud-font-body,
+    "Source Sans Pro",
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    Arial
+  );
+}
+
+.cs-spinner {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--sp-text);
+  font: 400 14px/1.2 var(--cs-font);
+}
+
+.cs-spinner--sm {
+  --sp-size: 16px;
+}
+.cs-spinner--md {
+  --sp-size: 24px;
+}
+.cs-spinner--lg {
+  --sp-size: 32px;
+}
+.cs-spinner--xl {
+  --sp-size: 40px;
+}
+
+.cs-spinner__svg {
+  width: var(--sp-size);
+  height: var(--sp-size);
+  display: block;
+  animation: sp-rotate var(--sp-speed) linear infinite;
+}
+
+.cs-spinner__path {
+  stroke-linecap: round;
+  stroke: var(--sp-accent);
+  fill: none;
+  animation: sp-dash 1500ms ease-in-out infinite;
+}
+
+.cs-spinner--light {
+  --sp-track: rgba(255, 255, 255, 0.35);
+  --sp-accent: #ffffff;
+  --sp-text: #ffffff;
+}
+
+.cs-spinner__label {
+  user-select: none;
+}
+
+@keyframes sp-rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes sp-dash {
+  0% {
+    stroke-dasharray: 1, 150;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -35;
+  }
+  100% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -124;
+  }
+}

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
-import { Card } from '../components/Card';
+import { Card } from '../components/Card/Card';
+import { Button } from '../components/Button/Button';
 
 const meta = {
   title: 'Consalud/Card',
@@ -14,30 +14,19 @@ const meta = {
     },
   },
   tags: ['autodocs'],
-  argTypes: {
-    variant: {
-      control: 'select',
-      options: ['default', 'outlined', 'elevated'],
-    },
-    padding: {
-      control: 'select',
-      options: ['none', 'small', 'medium', 'large'],
-    },
-    clickable: {
-      control: 'boolean',
-    },
-    disabled: {
-      control: 'boolean',
-    },
+
+  args: {
+    children: 'Card',
   },
-  args: { onClick: fn() },
-  decorators: [
-    (Story) => (
-      <div style={{ width: '320px', maxWidth: '100%' }}>
-        <Story />
-      </div>
-    ),
-  ],
+  render: () => (
+    <Card style={{ width: '320px', maxWidth: '100%' }}>
+      <h1>Card Title</h1>
+      <p>Esta es una tarjeta básica de Consalud con contenido simple.
+        Perfecta para mostrar información de manera organizada.
+      </p>
+      <Button>Button</Button>
+    </Card>
+  ),
 } satisfies Meta<typeof Card>;
 
 export default meta;
@@ -54,14 +43,15 @@ export const Default: Story = {
   },
 };
 
-export const WithTitleAndSubtitle: Story = {
+
+export const AllVariantsAndSizes: Story = {
   args: {
-    title: 'Título de la Tarjeta',
-    subtitle: 'Subtítulo informativo',
-    children: (
-      <p>
-        Contenido principal de la tarjeta con título y subtítulo definidos.
-      </p>
-    ),
+    children: 'Card',
   },
+  render: () => (
+    <Card>
+      Hola Mundo
+    </Card>
+  ),
 };
+

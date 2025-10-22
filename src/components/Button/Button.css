@@ -2,7 +2,7 @@
   font-family: var(--consalud-font-family);
   font-weight: var(--consalud-font-weight-medium);
   border: var(--consalud-border-width) solid transparent;
-  border-radius: 99px;
+  border-radius: 999px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;

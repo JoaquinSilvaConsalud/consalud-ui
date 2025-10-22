@@ -21,7 +21,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  border: var(--consalud-border-width) solid var(--consalud-gray-300);
+  border: var(--consalud-border-width) solid var(--consalud-border);
   border-radius: var(--consalud-border-radius);
   background-color: var(--consalud-white);
   transition: var(--consalud-transition-normal);
@@ -43,7 +43,6 @@
 
 .consalud-input-container--disabled {
   background-color: var(--consalud-gray-50);
-  border-color: var(--consalud-gray-200);
   cursor: not-allowed;
 }
 
