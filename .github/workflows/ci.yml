@@ -86,7 +86,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          file: ./Dockerfile # Asegurate que tu Dockerfile se llame 'Dockerfile' (con D mayúscula)
+          file: ./Dockerfile
           platforms: linux/amd64,linux/arm64
           tags: ${{ steps.generate_tags.outputs.tag }}
           push: true
