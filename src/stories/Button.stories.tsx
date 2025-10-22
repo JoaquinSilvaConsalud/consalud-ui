@@ -85,7 +85,9 @@ export const Loading: Story = {
 };
 
 export const AllVariantsAndSizes: Story = {
-  args: {},
+  args: {
+    children: 'Button', // Añadimos un valor por defecto para satisfacer a TypeScript
+  },
   render: () => (
     <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', flexDirection: 'column' }}>
       <Button variant="primary">Primary</Button>

@@ -11,7 +11,7 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build --config vite.config.ts",
+    "build": "npx tsc && vite build --config vite.config.ts",
     "build:lib": "vite build --config vite.config.lib.ts",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
