@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: consalud-ui
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: consalud-ui
+  template:
+    metadata:
+      labels:
+        app: consalud-ui
+    spec:
+      containers:
+      - name: consalud-ui
+        image: southamerica-west1-docker.pkg.dev/ethereal-brace-475715-d0/new-core-repo/consalud-ui:latest
+        ports:
+        - containerPort: 80

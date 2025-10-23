@@ -17,6 +17,9 @@ permissions:
   packages: write
 
 env:
+  PROJECT_ID: ethereal-brace-475715-d0
+  GCP_REGION: southamerica-west1
+  GKE_CLUSTER: new-core-repo
   IMAGE_NAME: consalud-ui
 
 jobs:
@@ -27,6 +30,25 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+    
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: 'projects/466181763387/locations/global/workloadIdentityPools/github-pool-v1/providers/github-provider'
+          service_account: 'github-actions@ethereal-brace-475715-d0.iam.gserviceaccount.com'
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Configure Docker for Artifact Registry
+        run: gcloud auth configure-docker ${{ env.GCP_REGION }}-docker.pkg.dev
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: ${{ env.GCP_REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/new-core-repo/${{ env.IMAGE_NAME }}:latest
 
       - name: Set up Node.js 18
         uses: actions/setup-node@v4
@@ -39,8 +61,8 @@ jobs:
       - name: Install dependencies
         run: npm install --force
 
-      - name: Build project
-        run: npm run build
+      - name: Build Storybook
+        run: npm run build-storybook
 
       - name: SonarQube Scan
         uses: sonarsource/sonarqube-scan-action@master
@@ -65,31 +87,37 @@ jobs:
           severity: 'HIGH,CRITICAL'
           output: 'trivy-dependencies.txt'
 
-      - name: Set up QEMU for multi-platform builds
-        uses: docker/setup-qemu-action@v3
+#      - name: Set up QEMU for multi-platform builds
+#        uses: docker/setup-qemu-action@v3
+#
+#      - name: Set up Docker Buildx
+#        uses: docker/setup-buildx-action@v3
+#
+#      - name: Log in to GitHub Container Registry
+#        uses: docker/login-action@v3
+#        with:
+#          registry: ghcr.io
+#          username: ${{ github.actor }}
+#          password: ${{ secrets.GITHUB_TOKEN }}
+#
+#      - name: Generate image tag
+#        id: generate_tags
+#        run: echo "tag=ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:latest" | tr '[:upper:]' '[:lower:]' >> $GITHUB_OUTPUT
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+#      - name: Build and push multi-platform Docker image
+#        uses: docker/build-push-action@v6
+#        with:
+#          context: .
+#          file: ./Dockerfile 
+#          platforms: linux/amd64,linux/arm64
+#          tags: ${{ steps.generate_tags.outputs.tag }}
+#          push: true
 
-      - name: Log in to GitHub Container Registry
-        uses: docker/login-action@v3
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Get GKE credentials
+        run: gcloud container clusters get-credentials ${{ env.GKE_CLUSTER }} --region ${{ env.GCP_REGION }}
 
-      - name: Generate image tag
-        id: generate_tags
-        run: echo "tag=ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:latest" | tr '[:upper:]' '[:lower:]' >> $GITHUB_OUTPUT
-
-      - name: Build and push multi-platform Docker image
-        uses: docker/build-push-action@v6
-        with:
-          context: .
-          file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
-          tags: ${{ steps.generate_tags.outputs.tag }}
-          push: true
+      - name: Deploy to GKE
+        run: kubectl apply -f k8s/
 
       - name: Run Trivy image scan
         uses: aquasecurity/trivy-action@master
