@@ -66,11 +66,14 @@ jobs:
           workload_identity_provider: 'projects/466181763387/locations/global/workloadIdentityPools/github-pool-v4/providers/github-provider'
           service_account: 'github-actions@ethereal-brace-475715-d0.iam.gserviceaccount.com'
 
-      - name: Configure Docker for Artifact Registry
+      - name: Set up Cloud SDK and GKE auth plugin
         uses: google-github-actions/setup-gcloud@v2
         with:
           project_id: ${{ env.PROJECT_ID }}
-      - run: gcloud auth configure-docker ${{ env.GCP_REGION }}-docker.pkg.dev
+          install_components: 'gke-gcloud-auth-plugin'
+
+      - name: Configure Docker for Artifact Registry
+        run: gcloud auth configure-docker ${{ env.GCP_REGION }}-docker.pkg.dev
 
       - name: Run Trivy FS scan for dependencies
         uses: aquasecurity/trivy-action@master
