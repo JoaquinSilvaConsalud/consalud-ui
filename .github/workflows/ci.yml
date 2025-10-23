@@ -57,15 +57,6 @@ jobs:
         with:
           node-version: '18.x'
 
-      - name: Remove package-lock.json to force dependency resolution
-        run: rm package-lock.json
-
-      - name: Install dependencies
-        run: npm install --force
-
-      - name: Build Storybook
-        run: npm run build-storybook
-
       - name: SonarQube Scan
         uses: sonarsource/sonarqube-scan-action@master
         env:
