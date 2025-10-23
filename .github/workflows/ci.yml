@@ -15,12 +15,14 @@ on:
 permissions:
   contents: read
   packages: write
+  id-token: write
 
 env:
   PROJECT_ID: ethereal-brace-475715-d0
   GCP_REGION: southamerica-west1
   GKE_CLUSTER: new-core-repo
   IMAGE_NAME: consalud-ui
+  ARTIFACT_REPO: new-core-repo
 
 jobs:
   build-scan-and-publish:
