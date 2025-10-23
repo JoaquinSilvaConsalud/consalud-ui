@@ -108,7 +108,7 @@ jobs:
           vuln-type: 'os,library'
           ignore-unfixed: true
           format: 'template'
-          template: template: '${{ github.action_path }}/contrib/html.tpl'
+          template: '${{ github.action_path }}/contrib/html.tpl'
           output: 'trivy-image-report.html'
           severity: 'HIGH,CRITICAL'
           exit-code: '0'
