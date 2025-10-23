@@ -33,29 +33,19 @@ jobs:
         with:
           fetch-depth: 0
     
-      - name: Authenticate to Google Cloud
-        uses: google-github-actions/auth@v2
-        with:
-          workload_identity_provider: 'projects/466181763387/locations/global/workloadIdentityPools/github-pool-v4/providers/github-provider'
-          service_account: 'github-actions@ethereal-brace-475715-d0.iam.gserviceaccount.com'
-
-      - name: Set up Cloud SDK
-        uses: google-github-actions/setup-gcloud@v2
-
-      - name: Configure Docker for Artifact Registry
-        run: gcloud auth configure-docker ${{ env.GCP_REGION }}-docker.pkg.dev
-
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v6
-        with:
-          context: .
-          push: true
-          tags: ${{ env.GCP_REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/new-core-repo/${{ env.IMAGE_NAME }}:latest
-
       - name: Set up Node.js 18
         uses: actions/setup-node@v4
         with:
           node-version: '18.x'
+
+      - name: Remove package-lock.json to force dependency resolution
+        run: rm -f package-lock.json
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Storybook
+        run: npm run build-storybook
 
       - name: SonarQube Scan
         uses: sonarsource/sonarqube-scan-action@master
@@ -70,41 +60,39 @@ jobs:
             -Dsonar.test.inclusions="**/*.test.tsx,**/*.test.ts,**/*.stories.tsx,**/*.stories.ts"
             -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
 
-      - name: Run Trivy FS scan
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: 'projects/466181763387/locations/global/workloadIdentityPools/github-pool-v4/providers/github-provider'
+          service_account: 'github-actions@ethereal-brace-475715-d0.iam.gserviceaccount.com'
+
+      - name: Configure Docker for Artifact Registry
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: ${{ env.PROJECT_ID }}
+      - run: gcloud auth configure-docker ${{ env.GCP_REGION }}-docker.pkg.dev
+
+      - name: Run Trivy FS scan for dependencies
         uses: aquasecurity/trivy-action@master
         with:
           scan-type: 'fs'
           vuln-type: 'library'
           ignore-unfixed: true
-          format: 'table'
+          format: 'template'
+          template: '@/contrib/html.tpl'
+          output: 'trivy-fs-report.html'
           severity: 'HIGH,CRITICAL'
-          output: 'trivy-dependencies.txt'
 
-#      - name: Set up QEMU for multi-platform builds
-#        uses: docker/setup-qemu-action@v3
-#
-#      - name: Set up Docker Buildx
-#        uses: docker/setup-buildx-action@v3
-#
-#      - name: Log in to GitHub Container Registry
-#        uses: docker/login-action@v3
-#        with:
-#          registry: ghcr.io
-#          username: ${{ github.actor }}
-#          password: ${{ secrets.GITHUB_TOKEN }}
-#
-#      - name: Generate image tag
-#        id: generate_tags
-#        run: echo "tag=ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:latest" | tr '[:upper:]' '[:lower:]' >> $GITHUB_OUTPUT
+      - name: Generate image tag
+        id: generate_tag
+        run: echo "tag=${{ env.GCP_REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.ARTIFACT_REPO }}/${{ env.IMAGE_NAME }}:latest" >> $GITHUB_OUTPUT
 
-#      - name: Build and push multi-platform Docker image
-#        uses: docker/build-push-action@v6
-#        with:
-#          context: .
-#          file: ./Dockerfile 
-#          platforms: linux/amd64,linux/arm64
-#          tags: ${{ steps.generate_tags.outputs.tag }}
-#          push: true
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.generate_tag.outputs.tag }}
 
       - name: Get GKE credentials
         run: gcloud container clusters get-credentials ${{ env.GKE_CLUSTER }} --region ${{ env.GCP_REGION }}
@@ -115,20 +103,21 @@ jobs:
       - name: Run Trivy image scan
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: ${{ steps.generate_tags.outputs.tag }}
+          image-ref: ${{ steps.generate_tag.outputs.tag }}
           scan-type: 'image'
           vuln-type: 'os,library'
           ignore-unfixed: true
-          format: 'table'
+          format: 'template'
+          template: '@/contrib/html.tpl'
+          output: 'trivy-image-report.html'
           severity: 'HIGH,CRITICAL'
-          output: 'trivy-image.txt'
           exit-code: '0'
 
-      - name: Upload Trivy reports
+      - name: Upload Trivy HTML reports
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: trivy-reports
           path: |
-            trivy-dependencies.txt
-            trivy-image.txt
+            trivy-fs-report.html
+            trivy-image-report.html
