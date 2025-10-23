@@ -20,7 +20,7 @@ permissions:
 env:
   PROJECT_ID: ethereal-brace-475715-d0
   GCP_REGION: southamerica-west1
-  GKE_CLUSTER: new-core-repo
+  GKE_CLUSTER: new-core-cluster
   IMAGE_NAME: consalud-ui
   ARTIFACT_REPO: new-core-repo
 
