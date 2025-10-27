@@ -81,9 +81,7 @@ jobs:
           scan-type: 'fs'
           vuln-type: 'library'
           ignore-unfixed: true
-          format: 'template'
-          template: '${{ github.action_path }}/contrib/html.tpl'
-          output: 'trivy-fs-report.html'
+          output: 'trivy-fs-report.txt'
           severity: 'HIGH,CRITICAL'
 
       - name: Generate image tag
@@ -100,8 +98,15 @@ jobs:
       - name: Get GKE credentials
         run: gcloud container clusters get-credentials ${{ env.GKE_CLUSTER }} --region ${{ env.GCP_REGION }}
 
-      - name: Deploy to GKE
-        run: kubectl apply -f k8s/
+      - name: 🚀 1. Apply k8s Resources (Deployment & Service)
+        run: |
+          kubectl apply -f k8s/deployment.yml
+          kubectl apply -f k8s/service.yml
+
+      - name: 🔄 2. Update Deployment Image Tag
+        run: |
+          IMAGE_TAG="${{ steps.generate_tag.outputs.tag }}"
+          kubectl set image deployment/consalud-ui consalud-ui=$IMAGE_TAG
 
       - name: Run Trivy image scan
         uses: aquasecurity/trivy-action@master
@@ -110,17 +115,15 @@ jobs:
           scan-type: 'image'
           vuln-type: 'os,library'
           ignore-unfixed: true
-          format: 'template'
-          template: '${{ github.action_path }}/contrib/html.tpl'
-          output: 'trivy-image-report.html'
+          output: 'trivy-image-report.txt'
           severity: 'HIGH,CRITICAL'
           exit-code: '0'
 
-      - name: Upload Trivy HTML reports
+      - name: Upload Trivy reports
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: trivy-reports
           path: |
-            trivy-fs-report.html
-            trivy-image-report.html
+            trivy-fs-report.txt
+            trivy-image-report.txt
