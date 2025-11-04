@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import Spinner from "../components/Spinner/Spinner";
 
 const meta = {
-  title: "Consalud/Spinner",
+  title: "Consalud/Atoms/Spinner",
   component: Spinner,
   parameters: { layout: "centered" },
   tags: ["autodocs"],

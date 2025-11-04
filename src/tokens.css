@@ -1,93 +1,94 @@
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap");
 
 :root {
-    /* Colors */
-    --consalud-primary: #00cbbf;
-    --consalud-primary-dark: #00a69b;
-    --consalud-primary-darker: #027373;
-    --consalud-primary-light: #33d6cc;
-    --consalud-primary-lighter: #66e1d9;
+  /* Colors */
+  --consalud-primary: #00cbbf;
+  --consalud-primary-dark: #00a69b;
+  --consalud-primary-darker: #027373;
+  --consalud-primary-light: #33d6cc;
+  --consalud-primary-lighter: #66e1d9;
 
-    --consalud-secondary: #1e40af;
-    --consalud-success: #22c55e;
-    --consalud-warning: #f59e0b;
-    --consalud-error: #ef4444;
-    --consalud-info: #3b82f6;
+  --consalud-secondary: #1e40af;
+  --consalud-success: #22c55e;
+  --consalud-warning: #f59e0b;
+  --consalud-error: #ef4444;
+  --consalud-info: #3b82f6;
 
-    --consalud-white: #ffffff;
-    --consalud-black: #000000;
+  --consalud-white: #ffffff;
+  --consalud-black: #000000;
 
-    --consalud-border: #e5e7eb;
-    --consalud-shadow: 0 8px 5px rgba(0, 0, 0, 0.1);
+  --consalud-border: #e5e7eb;
+  --consalud-shadow: 0 8px 5px rgba(0, 0, 0, 0.1);
 
-    /* Typography */
-    --consalud-font-family:
-        "Work Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
-        "Roboto", sans-serif;
-    --consalud-font-size-xs: 0.75rem; /* 12px */
-    --consalud-font-size-sm: 0.875rem; /* 14px */
-    --consalud-font-size-base: 1rem; /* 16px */
-    --consalud-font-size-lg: 1.125rem; /* 18px */
-    --consalud-font-size-xl: 1.25rem; /* 20px */
-    --consalud-font-size-2xl: 1.5rem; /* 24px */
-    --consalud-font-size-3xl: 1.875rem; /* 30px */
+  --consalud-max-width: 1200px;
 
-    --consalud-font-weight-normal: 400;
-    --consalud-font-weight-medium: 500;
-    --consalud-font-weight-semibold: 600;
-    --consalud-font-weight-bold: 700;
+  --consalud-gray-100: #f8f8fa;
+  --consalud-gris-oscuro: #505050;
 
-    --consalud-line-height-tight: 1.25;
-    --consalud-line-height-normal: 1.5;
-    --consalud-line-height-relaxed: 1.75;
+  /* Typography */
+  --consalud-font-family: "Work Sans", "Inter", -apple-system,
+    BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif;
+  --consalud-font-size-xs: 0.75rem; /* 12px */
+  --consalud-font-size-sm: 0.875rem; /* 14px */
+  --consalud-font-size-base: 1rem; /* 16px */
+  --consalud-font-size-lg: 1.125rem; /* 18px */
+  --consalud-font-size-xl: 1.25rem; /* 20px */
+  --consalud-font-size-2xl: 1.5rem; /* 24px */
+  --consalud-font-size-3xl: 1.875rem; /* 30px */
 
-    /* Spacing */
-    --consalud-spacing-xs: 0.25rem; /* 4px */
-    --consalud-spacing-sm: 0.5rem; /* 8px */
-    --consalud-spacing-md: 0.75rem; /* 12px */
-    --consalud-spacing-base: 1rem; /* 16px */
-    --consalud-spacing-lg: 1.5rem; /* 24px */
-    --consalud-spacing-xl: 2rem; /* 32px */
-    --consalud-spacing-2xl: 2.5rem; /* 40px */
-    --consalud-spacing-3xl: 3rem; /* 48px */
+  --consalud-font-weight-normal: 400;
+  --consalud-font-weight-medium: 500;
+  --consalud-font-weight-semibold: 600;
+  --consalud-font-weight-bold: 700;
 
-    /* Border */
+  --consalud-line-height-tight: 1.25;
+  --consalud-line-height-normal: 1.5;
+  --consalud-line-height-relaxed: 1.75;
 
-    --consalud-border-width: 1px;
-    --consalud-border-width-thick: 2px;
+  /* Spacing */
+  --consalud-spacing-xs: 0.25rem; /* 4px */
+  --consalud-spacing-sm: 0.5rem; /* 8px */
+  --consalud-spacing-md: 0.75rem; /* 12px */
+  --consalud-spacing-base: 1rem; /* 16px */
+  --consalud-spacing-lg: 1.5rem; /* 24px */
+  --consalud-spacing-xl: 2rem; /* 32px */
+  --consalud-spacing-2xl: 2.5rem; /* 40px */
+  --consalud-spacing-3xl: 3rem; /* 48px */
 
-    --border-radius-base: 16px;
-    --consalud-border-radius-sm: calc(var(--border-radius-base) / 4); /* 4px */
-    --consalud-border-radius: calc(var(--border-radius-base) / 3); /* 8px */
-    --consalud-border-radius-lg: calc(
-        var(--border-radius-base) / 1.5
-    ); /* 12px */
-    --consalud-border-radius-xl: var(--border-radius-base); /* 16px */
-    --consalud-border-radius-full: calc(
-        var(--border-radius-base) * 1.5
-    ); /* 16px */
+  /* Border */
 
-    /* Shadows */
-    --consalud-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-    --consalud-shadow:
-        0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-    --consalud-shadow-md:
-        0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-    --consalud-shadow-lg:
-        0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-    --consalud-shadow-xl:
-        0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --consalud-border-width: 1px;
+  --consalud-border-width-thick: 2px;
 
-    /* Transitions */
-    --consalud-transition-fast: 150ms ease-in-out;
-    --consalud-transition-normal: 200ms ease-in-out;
-    --consalud-transition-slow: 300ms ease-in-out;
+  --border-radius-base: 16px;
+  --consalud-border-radius-sm: calc(var(--border-radius-base) / 4); /* 4px */
+  --consalud-border-radius: calc(var(--border-radius-base) / 3); /* 8px */
+  --consalud-border-radius-lg: calc(var(--border-radius-base) / 1.5); /* 12px */
+  --consalud-border-radius-xl: var(--border-radius-base); /* 16px */
+  --consalud-border-radius-full: calc(
+    var(--border-radius-base) * 1.5
+  ); /* 16px */
 
-    /* Z-index */
-    --consalud-z-dropdown: 1000;
-    --consalud-z-sticky: 1020;
-    --consalud-z-fixed: 1030;
-    --consalud-z-modal: 1040;
-    --consalud-z-popover: 1050;
-    --consalud-z-tooltip: 1060;
+  /* Shadows */
+  --consalud-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --consalud-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1),
+    0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --consalud-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1),
+    0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --consalud-shadow-lg: 0 8px 20px 0px rgb(0 0 0 / 0.08);
+  --consalud-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+    0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+  /* Transitions */
+  --consalud-transition-fast: 150ms ease-in-out;
+  --consalud-transition-normal: 200ms ease-in-out;
+  --consalud-transition-slow: 300ms ease-in-out;
+
+  /* Z-index */
+  --consalud-z-dropdown: 1000;
+  --consalud-z-sticky: 1020;
+  --consalud-z-fixed: 1030;
+  --consalud-z-modal: 1040;
+  --consalud-z-popover: 1050;
+  --consalud-z-tooltip: 1060;
 }

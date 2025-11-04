@@ -32,12 +32,13 @@ export const CheckBox: React.FC<CheckBoxProps> = ({
   value,
   disabled = false,
   label,
-  checked, // controlado
-  defaultChecked, // no controlado
+  checked,
+  defaultChecked,
   onFocus,
   onBlur,
   onChange,
-  setValue, // compat: llamamos además de onChange
+  setValue,
+  ...props
 }) => {
   const isControlled = typeof checked === "boolean";
   const [inner, setInner] = React.useState<boolean>(!!defaultChecked);
@@ -55,6 +56,7 @@ export const CheckBox: React.FC<CheckBoxProps> = ({
       <div className={`checkbox-component ${className}`}>
         <div className="container-check">
           <input
+            {...props}
             id={id}
             className="checkbox"
             type="checkbox"

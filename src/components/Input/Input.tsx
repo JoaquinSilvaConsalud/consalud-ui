@@ -33,7 +33,10 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     const hasError = Boolean(error) || invalid;
 
     return (
-      <div className={`consalud-input-wrapper ${className}`.trim()}>
+      <div className={[
+        'consalud-input-wrapper',
+        className
+      ].join(' ').trim()}>
         {label && (
           <label htmlFor={inputId} className="consalud-input-label">
             {label}

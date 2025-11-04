@@ -27,8 +27,8 @@ export const Spinner: React.FC<SpinnerProps> = ({
         "cs-spinner",
         `cs-spinner--${size}`,
         `cs-spinner--${variant}`,
-        className,
-      ].join(" ")}
+        className
+      ].join(" ").trim()}
       role="status"
       aria-live="polite"
       aria-label={label ? undefined : ariaLabel}

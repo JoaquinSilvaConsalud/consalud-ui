@@ -39,7 +39,7 @@ const Logo = ({
     return (
         <svg
             {...props}
-            className={className}
+            className={[className].filter(Boolean).join(' ').trim()}
             viewBox={type === "iso" ? "0 0 49 42" : "0 0 145 42"}
             fill="none"
             xmlns="http://www.w3.org/2000/svg"

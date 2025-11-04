@@ -33,19 +33,16 @@ export const ActionCard: React.FC<ActionCardProps> = ({
   description,
   loading = false,
   disabled = false,
-
   inputLabel = "Rut",
   inputPlaceholder = "Ingresa tu rut",
   inputType = "text",
-
   passwordLabel = "Password",
   passwordPlaceholder = "Ingresa tu contraseña",
   passwordType = "password",
-
   checkboxLabel = "Recordar contraseña",
-
   actionText = "Login",
   onAction,
+  className,
 }) => {
   const [inputVal, setInputVal] = React.useState("");
   const [passwordVal, setPasswordVal] = React.useState("");
@@ -57,11 +54,13 @@ export const ActionCard: React.FC<ActionCardProps> = ({
   };
 
   return (
-    <Card style={{
-      width: '320px',
-      opacity: disabled ? 0.8 : 1,
-      filter: disabled ? "grayscale(1)" : "none",
-    }}>
+    <Card
+      className={className}
+      style={{
+        width: '320px',
+        opacity: disabled ? 0.8 : 1,
+        filter: disabled ? "grayscale(1)" : "none",
+      }}>
       <h3>{title}</h3>
       {description && <p className="ac__desc">{description}</p>}
       {loading && <Spinner size="md" ariaLabel="Cargando…" style={{

@@ -3,7 +3,7 @@ import { Card } from '../components/Card/Card';
 import { Button } from '../components/Button/Button';
 
 const meta = {
-  title: 'Consalud/Card',
+  title: 'Consalud/Atoms/Card',
   component: Card,
   parameters: {
     layout: 'centered',

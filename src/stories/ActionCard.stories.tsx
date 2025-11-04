@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import ActionCard from "../components/ActionCard/ActionCard";
 
 const meta = {
-  title: "Consalud/ActionCard",
+  title: "Consalud/Molecules/ActionCard",
   component: ActionCard,
   parameters: { layout: "centered" },
   tags: ["autodocs"],

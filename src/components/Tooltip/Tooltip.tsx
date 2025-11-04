@@ -28,9 +28,12 @@ export const Tooltip: React.FC<TooltipProps> = ({
     <div className="tooltip-component" aria-hidden id={`${rootId}-component`}>
       <div
         id={rootId}
-        className={["tooltip-container", desktopCls, mobileCls, className].join(
-          " "
-        )}
+        className={[
+          "tooltip-container",
+          desktopCls,
+          mobileCls,
+          className
+        ].filter(Boolean).join(' ').trim()}
       >
         {children}
       </div>

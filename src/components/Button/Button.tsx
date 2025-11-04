@@ -10,6 +10,7 @@ export interface ButtonProps {
   children: React.ReactNode;
   icon?: React.ReactNode;
   onClick?: () => void;
+  className?: string;
 }
 
 
@@ -21,6 +22,8 @@ export const Button = ({
   loading = false,
   children,
   icon,
+  onClick,
+  className = '',
   ...props
 }: ButtonProps) => {
   return (
@@ -32,7 +35,8 @@ export const Button = ({
         `consalud-button--${variant}`,
         disabled ? 'consalud-button--disabled' : '',
         loading ? 'consalud-button--loading' : '',
-      ].join(' ')}
+        className
+      ].join(' ').trim()}
       disabled={disabled || loading}
       {...props}
     >
