@@ -4,18 +4,27 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Entorno al que desplegar'
+        type: choice
+        options: [ 'development', 'production' ]
+        required: true
+        default: 'development'
 
 jobs:
   build-and-publish-npm:
     runs-on: ubuntu-latest
+    environment: ${{ github.event.inputs.environment || 'development' }}
     permissions:
       contents: 'read'
       id-token: 'write'
 
     env:
-      PROJECT_ID: ethereal-brace-475715-d0
-      GCP_LOCATION: southamerica-west1
-      GCP_NPM_REPO_NAME: npm-consalud
+      PROJECT_ID: ${{ vars.PROJECT_ID }}
+      GCP_LOCATION: ${{ vars.GCP_LOCATION }}
+      GCP_NPM_REPO_NAME: ${{ vars.GCP_NPM_REPO_NAME }}
 
     steps:
       - name: ⚙️ Checkout code
@@ -37,8 +46,8 @@ jobs:
         id: auth
         uses: google-github-actions/auth@v2
         with:
-          workload_identity_provider: 'projects/466181763387/locations/global/workloadIdentityPools/github-pool-v4/providers/github-provider'
-          service_account: 'github-actions@ethereal-brace-475715-d0.iam.gserviceaccount.com'
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
           token_format: "access_token"
 
       - name: 🔑 Get GCP Access Token (para .npmrc)
