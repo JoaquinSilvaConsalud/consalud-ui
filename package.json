@@ -23,14 +23,13 @@
   "devDependencies": {
     "@storybook/react-vite": "^8.6.14",
     "@storybook/test": "^8.6.14",
-    "@types/react": "^19.1.1",
-    "@types/react-dom": "^19.1.1",
+    "@types/react": "^18.2.66",
+    "@types/react-dom": "^18.2.22",
     "storybook": "^8.6.14",
     "typescript": "~5.8.3",
     "vite": "^6.3.6"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "peerDependencies": {
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
