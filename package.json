@@ -1,7 +1,7 @@
 {
   "name": "@consalud/consalud-ui",
   "private": false,
-  "version": "1.0.1",
+  "version": "1.0.2",
   "publishConfig": {
     "registry": "https://southamerica-west1-npm.pkg.dev/ethereal-brace-475715-d0/npm-consalud/"
   },
@@ -14,7 +14,7 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build --config vite.config.lib.ts",
+    "build": "vite build --config vite.config.lib.ts && tsc",
     "build:lib": "vite build --config vite.config.lib.ts",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
