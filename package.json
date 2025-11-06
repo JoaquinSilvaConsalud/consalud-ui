@@ -1,7 +1,7 @@
 {
   "name": "@consalud/consalud-ui",
   "private": false,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publishConfig": {
     "registry": "https://southamerica-west1-npm.pkg.dev/ethereal-brace-475715-d0/npm-consalud/"
   },
@@ -30,7 +30,11 @@
     "vite": "^6.3.6"
   },
   "dependencies": {
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    // ⛔️ SE FUE DE AQUÍ: "react": "^19.1.1",
+    // ⛔️ SE FUE DE AQUÍ: "react-dom": "^19.1.1"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
   }
 }
