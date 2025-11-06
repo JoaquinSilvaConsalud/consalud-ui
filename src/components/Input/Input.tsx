@@ -1,6 +1,4 @@
 import React from "react";
-import "../../tokens.css";
-import "./Input.css";
 
 export interface InputProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
@@ -34,31 +32,31 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
     return (
       <div className={[
-        'consalud-input-wrapper',
+        'input-wrapper',
         className
       ].join(' ').trim()}>
         {label && (
-          <label htmlFor={inputId} className="consalud-input-label">
+          <label htmlFor={inputId} className="input-label">
             {label}
-            {required && <span className="consalud-input-required">*</span>}
+            {required && <span className="input-required">*</span>}
           </label>
         )}
 
         <div
           className={[
-            "consalud-input-container",
-            `consalud-input-container--${size}`,
-            hasError ? "consalud-input-container--error" : "",
-            props.disabled ? "consalud-input-container--disabled" : "",
+            "input-container",
+            `input-container--${size}`,
+            hasError ? "input-container--error" : "",
+            props.disabled ? "input-container--disabled" : "",
           ].join(" ")}
         >
           <input
             ref={ref}
             id={inputId}
             className={[
-              "consalud-input",
-              `consalud-input--${size}`,
-              hasError ? "consalud-input--error" : "",
+              "input",
+              `input--${size}`,
+              hasError ? "input--error" : "",
             ].join(" ")}
             aria-invalid={hasError}
             aria-describedby={
@@ -72,20 +70,20 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
           />
 
           {icon && (
-            <div className="consalud-input-icon consalud-input-icon--end">
+            <div className="input-icon input-icon--end">
               {icon}
             </div>
           )}
         </div>
 
         {error && (
-          <div id={`${inputId}-error`} className="consalud-input-error">
+          <div id={`${inputId}-error`} className="input-error">
             {error}
           </div>
         )}
 
         {helperText && !error && (
-          <div id={`${inputId}-helper`} className="consalud-input-helper">
+          <div id={`${inputId}-helper`} className="input-helper">
             {helperText}
           </div>
         )}

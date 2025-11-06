@@ -1,11 +1,10 @@
-import "../../tokens.css";
-import "./Card.css";
 
 export interface CardProps {
   children: React.ReactNode;
   style?: React.CSSProperties;
   className?: string;
   type?: "default" | "button";
+  onClick?: () => void;
 }
 
 export const Card = ({
@@ -16,7 +15,7 @@ export const Card = ({
   ...props
 }: CardProps) => {
   return (
-    <div className={`consalud-card consalud-card--${type} ${className || ''}`.trim()} style={style} {...props}>
+    <div className={`card card--${type} ${className || ''}`.trim()} style={style} {...props}>
       {children}
     </div>
   );

@@ -1,33 +1,34 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
-import { Button } from '../components/Button/Button';
+import type { Meta, StoryObj } from "@storybook/react";
+import { fn } from "@storybook/test";
+import { Button } from "../components/Button/Button";
 
 const meta = {
-  title: 'Consalud/Atoms/Button',
+  title: "Consalud/Button",
   component: Button,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
     docs: {
       description: {
-        component: 'Componente Button base de Consalud con diferentes variantes, tamaños y estados.',
+        component:
+          "Componente Button base de Consalud con diferentes variantes, tamaños y estados.",
       },
     },
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     variant: {
-      control: 'select',
-      options: ['primary', 'secondary', 'inverted'],
+      control: "select",
+      options: ["primary", "secondary", "inverted"],
     },
     size: {
-      control: 'select',
-      options: ['small', 'medium', 'large'],
+      control: "select",
+      options: ["small", "medium", "large"],
     },
     disabled: {
-      control: 'boolean',
+      control: "boolean",
     },
     loading: {
-      control: 'boolean',
+      control: "boolean",
     },
   },
   args: { onClick: fn() },
@@ -39,24 +40,26 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
   args: {
     primary: true,
-    children: 'Button',
+    children: "Button",
   },
 };
 
 export const Secondary: Story = {
   args: {
-    children: 'Button',
-    variant: 'secondary',
+    children: "Button",
+    variant: "secondary",
   },
 };
 
 export const Inverted: Story = {
   args: {
-    variant: 'inverted',
-    children: 'Button',
+    variant: "inverted",
+    children: "Button",
   },
   render: () => (
-    <div style={{ backgroundColor: '#111827', padding: '1rem', margin: 'auto' }}>
+    <div
+      style={{ backgroundColor: "#111827", padding: "1rem", margin: "auto" }}
+    >
       <Button variant="inverted">Inverted</Button>
     </div>
   ),
@@ -64,42 +67,50 @@ export const Inverted: Story = {
 
 export const Large: Story = {
   args: {
-    size: 'large',
-    children: 'Button',
+    size: "large",
+    children: "Button",
   },
 };
 
 export const Small: Story = {
   args: {
-    size: 'small',
-    children: 'Button',
+    size: "small",
+    children: "Button",
   },
 };
 
 export const Disabled: Story = {
   args: {
     disabled: true,
-    children: 'Disabled Button',
+    children: "Disabled Button",
   },
 };
 
 export const Loading: Story = {
   args: {
     loading: true,
-    children: 'Loading Button',
+    children: "Loading Button",
   },
 };
 
 export const AllVariantsAndSizes: Story = {
   args: {
-    children: 'Button',
+    children: "Button",
   },
   render: () => (
-    <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', flexDirection: 'column' }}>
+    <div
+      style={{
+        display: "flex",
+        gap: "1rem",
+        flexWrap: "wrap",
+        flexDirection: "column",
+      }}
+    >
       <Button variant="primary">Primary</Button>
       <Button variant="secondary">Secondary</Button>
-      <div style={{ backgroundColor: '#111827', padding: '1rem', margin: 'auto' }}>
-
+      <div
+        style={{ backgroundColor: "#111827", padding: "1rem", margin: "auto" }}
+      >
         <Button variant="inverted">Inverted</Button>
       </div>
       <Button size="small">Small (12px)</Button>
@@ -108,4 +119,3 @@ export const AllVariantsAndSizes: Story = {
     </div>
   ),
 };
-

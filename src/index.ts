@@ -1,5 +1,5 @@
 // Tokens CSS
-import "./tokens.css";
+import "../src/styles/index.css";
 
 // Componentes
 export { Button } from "./components/Button/Button";

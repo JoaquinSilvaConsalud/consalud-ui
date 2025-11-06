@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import Tooltip from "../components/Tooltip/Tooltip";
 
 const meta = {
-  title: "Consalud/Atoms/Tooltip",
+  title: "Consalud/Tooltip",
   component: Tooltip,
   parameters: { layout: "centered" },
   tags: ["autodocs"],
@@ -23,7 +23,8 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     placement: "left",
-    children: "Este es el contenido del tooltip. Soporta varias líneas y HTML simple."
+    children:
+      "Este es el contenido del tooltip. Soporta varias líneas y HTML simple.",
   },
   render: (args) => (
     <div
@@ -41,7 +42,7 @@ export const Default: Story = {
 export const Positions: Story = {
   args: {
     placement: "left",
-    children: "Tooltip example"
+    children: "Tooltip example",
   },
   render: (args) => (
     <div style={{ display: "grid", gap: 24 }}>

@@ -1,4 +1,4 @@
-import "./style.css";
+import "./styles/style.css";
 import { Button, Input, Card } from "./index";
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `

@@ -1,0 +1,21 @@
+.alert {
+  padding: var(--consalud-spacing-lg);
+  border-radius: var(--consalud-border-radius-xl);
+  background-color: var(--consalud-secondary-background);
+  font-weight: var(--consalud-font-weight-medium);
+  display: flex;
+  align-items: center;
+  gap: var(--consalud-spacing-md);
+  svg,
+  img,
+  .icon {
+    width: 24px;
+    height: 24px;
+    text-align: center;
+    padding: 0;
+    line-height: 1;
+    font-size: var(--consalud-font-size-2xl);
+    color: var(--consalud-secondary);
+    fill: var(--consalud-secondaty);
+  }
+}

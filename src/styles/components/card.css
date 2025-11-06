@@ -1,4 +1,4 @@
-.consalud-card {
+.card {
   font-family: var(--consalud-font-family);
   background-color: var(--consalud-white);
   border-radius: var(--consalud-border-radius-lg);
@@ -34,7 +34,7 @@
   p:first-of-type {
     font-weight: 400;
   }
-  &.consalud-card--button {
+  &.card--button {
     p {
       font-weight: var(--consalud-font-weight-medium);
     }
@@ -47,17 +47,17 @@
     border-width: var(--consalud-border-width);
     border-color: var(--consalud-primary);
   }
-  &.consalud-card--button:after {
+  &.card--button:after {
     content: "→";
     display: inline-block;
     margin-left: auto;
     color: var(--consalud-primary);
   }
-  &.consalud-card--button:hover {
+  &.card--button:hover {
     box-shadow: var(--consalud-shadow-sm);
     color: black;
   }
-  &.consalud-card--button:active {
+  &.card--button:active {
     transform: translateY(2px);
   }
 }

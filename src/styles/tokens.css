@@ -8,14 +8,18 @@
   --consalud-primary-light: #33d6cc;
   --consalud-primary-lighter: #66e1d9;
 
-  --consalud-secondary: #1e40af;
+  --consalud-secondary: #664efb;
+  --consalud-secondary-background: #654efb1d;
+
   --consalud-success: #22c55e;
   --consalud-warning: #f59e0b;
   --consalud-error: #ef4444;
+
   --consalud-info: #3b82f6;
+  --consalud-info-background: #3b83f620;
 
   --consalud-white: #ffffff;
-  --consalud-black: #000000;
+  --consalud-foreground: #242424;
 
   --consalud-border: #e5e7eb;
   --consalud-shadow: 0 8px 5px rgba(0, 0, 0, 0.1);
@@ -23,7 +27,10 @@
   --consalud-max-width: 1200px;
 
   --consalud-gray-100: #f8f8fa;
+  --consalud-gris: #949494;
+  --consalud-gris-primario: #808080;
   --consalud-gris-oscuro: #505050;
+  --consalud-black: #000;
 
   /* Typography */
   --consalud-font-family: "Work Sans", "Inter", -apple-system,
@@ -40,6 +47,7 @@
   --consalud-font-weight-medium: 500;
   --consalud-font-weight-semibold: 600;
   --consalud-font-weight-bold: 700;
+  --consalud-font-weight-black: 900;
 
   --consalud-line-height-tight: 1.25;
   --consalud-line-height-normal: 1.5;

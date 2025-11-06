@@ -1,6 +1,4 @@
 import React from "react";
-import "../../tokens.css";
-import "./Spinner.css";
 
 export interface SpinnerProps {
   size?: "sm" | "md" | "lg" | "xl";

@@ -1,0 +1,27 @@
+.hero {
+  background-color: var(--consalud-primary);
+  color: var(--consalud-white);
+  padding: var(--consalud-spacing-3xl);
+  text-align: center;
+  h1 {
+    font-size: var(--consalud-font-size-3xl);
+    font-weight: var(--consalud-font-weight-black);
+  }
+  p {
+    font-size: var(--consalud-font-size-lg);
+  }
+  transition: var(--consalud-transition-normal);
+}
+
+@media (max-width: 768px) {
+  .hero {
+    h1 {
+      font-size: var(--consalud-font-size-2xl);
+    }
+    p {
+      font-size: var(--consalud-font-size-sm);
+    }
+    padding-bottom: 140px;
+    margin-bottom: -130px;
+  }
+}

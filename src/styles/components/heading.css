@@ -1,0 +1,4 @@
+.heading {
+  font-weight: var(--consalud-font-weight-black);
+  margin-block: var(--consalud-spacing-lg);
+}

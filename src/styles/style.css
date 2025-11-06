@@ -1,0 +1,23 @@
+:root {
+  color-scheme: light dark;
+  color: var(--consalud-white);
+  background-color: var(--consalud-foreground);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: var(--consalud-foreground);
+    background-color: var(--consalud-white);
+  }
+  a:hover {
+    color: var(--consalud-primary);
+  }
+  button {
+    background-color: var(--consalud-gray-100);
+  }
+}

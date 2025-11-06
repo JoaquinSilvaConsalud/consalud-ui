@@ -16,7 +16,7 @@ const EyeIcon = () => (
 );
 
 const meta = {
-  title: "Consalud/Atoms/Input",
+  title: "Consalud/Input",
   component: Input,
   parameters: {
     layout: "centered",

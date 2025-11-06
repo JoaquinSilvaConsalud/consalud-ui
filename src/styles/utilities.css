@@ -1,0 +1,67 @@
+/* Width */
+.w-full {
+  width: 100%;
+}
+
+.max-w-container {
+  max-width: var(--consalud-max-width);
+  width: calc(100% - var(--consalud-spacing-2xl));
+}
+
+.max-w-md {
+  max-width: 480px;
+}
+
+.max-w-lg {
+  max-width: 768px;
+}
+
+/* Margins */
+.mx-auto {
+  margin: 0 auto;
+}
+.ml-auto {
+  margin-left: auto;
+}
+.mt-lg {
+  margin-top: var(--consalud-spacing-lg);
+}
+.mt-xl {
+  margin-top: var(--consalud-spacing-xl);
+}
+
+/* Alignment */
+.justify-center {
+  justify-content: center;
+}
+.items-center {
+  align-items: center;
+}
+.text-center {
+  text-align: center;
+}
+
+/* Padding */
+.p-md {
+  padding: var(--consalud-spacing-md);
+}
+
+.p-lg {
+  padding: var(--consalud-spacing-lg);
+}
+
+/* Text */
+.text-secondary {
+  color: var(--consalud-secondary);
+}
+
+/* Display */
+.hidden {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .md\:block {
+    display: block;
+  }
+}

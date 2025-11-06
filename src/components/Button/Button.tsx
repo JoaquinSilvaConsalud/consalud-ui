@@ -1,5 +1,3 @@
-import '../../tokens.css';
-import './Button.css';
 
 export interface ButtonProps {
   primary?: boolean;
@@ -30,22 +28,23 @@ export const Button = ({
     <button
       type="button"
       className={[
-        'consalud-button',
-        `consalud-button--${size}`,
-        `consalud-button--${variant}`,
-        disabled ? 'consalud-button--disabled' : '',
-        loading ? 'consalud-button--loading' : '',
+        'button',
+        `button--${size}`,
+        `button--${variant}`,
+        disabled ? 'button--disabled' : '',
+        loading ? 'button--loading' : '',
         className
       ].join(' ').trim()}
       disabled={disabled || loading}
+      onClick={onClick}
       {...props}
     >
-      {loading && <span className="consalud-button__spinner" />}
-      <span className={loading ? 'consalud-button__text--hidden' : ''}>
+      {loading && <span className="button__spinner" />}
+      <span className={loading ? 'button__text--hidden' : ''}>
         {children}
       </span>
       {icon && (
-        <span className="consalud-button__icon">
+        <span className="button__icon">
           {icon}
         </span>
       )}

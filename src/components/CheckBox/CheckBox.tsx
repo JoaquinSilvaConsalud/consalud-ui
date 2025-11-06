@@ -1,6 +1,4 @@
 import React from "react";
-import "../../tokens.css"; // cambia a '@/tokens.css' si tienes alias
-import "./CheckBox.css";
 
 export interface CheckBoxProps {
   id?: string;

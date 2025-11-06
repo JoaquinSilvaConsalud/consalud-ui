@@ -1,6 +1,4 @@
 import React from "react";
-import "../../tokens.css";
-import "./Tooltip.css";
 
 export interface TooltipProps {
   id?: string;
