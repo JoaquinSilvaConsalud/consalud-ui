@@ -1,0 +1,59 @@
+name: Publish NPM Package to GCP Artifact Registry
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-publish-npm:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
+    env:
+      PROJECT_ID: ethereal-brace-475715-d0
+      GCP_LOCATION: southamerica-west1
+      GCP_NPM_REPO_NAME: npm-consalud
+
+    steps:
+      - name: ⚙️ Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🛠️ Set up Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18.x'
+          cache: 'npm'
+
+      - name: 📦 Install dependencies
+        run: npm ci
+
+      - name: 🏗️ Build library (Genera la carpeta 'dist')
+        run: npm run build
+
+      - name: 🔐 Authenticate to Google Cloud
+        id: auth
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: 'projects/466181763387/locations/global/workloadIdentityPools/github-pool-v4/providers/github-provider'
+          service_account: 'github-actions@ethereal-brace-475715-d0.iam.gserviceaccount.com'
+          token_format: "access_token"
+
+      - name: 🔑 Get GCP Access Token (para .npmrc)
+        id: token
+        run: |
+          echo "GCP_NPM_TOKEN=$(gcloud auth print-access-token)" >> $GITHUB_ENV
+
+      - name: 📝 Create .npmrc file for publishing
+        run: |
+          echo "@consalud:registry=https://${{ env.GCP_LOCATION }}-npm.pkg.dev/${{ env.PROJECT_ID }}/${{ env.GCP_NPM_REPO_NAME }}/" > .npmrc
+          echo "//${{ env.GCP_LOCATION }}-npm.pkg.dev/${{ env.PROJECT_ID }}/${{ env.GCP_NPM_REPO_NAME }}/:_authToken=${{ env.GCP_NPM_TOKEN }}" >> .npmrc
+          echo "always-auth=true" >> .npmrc
+
+      - name: 🚀 Publish to GCP Artifact Registry
+        run: npm publish
+
+      - name: 🗑️ Clean up .npmrc
+        run: rm .npmrc
