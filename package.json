@@ -1,7 +1,7 @@
 {
   "name": "@consalud/consalud-ui",
   "private": false,
-  "version": "1.0.2",
+  "version": "1.0.3",
   "publishConfig": {
     "registry": "https://southamerica-west1-npm.pkg.dev/ethereal-brace-475715-d0/npm-consalud/"
   },
