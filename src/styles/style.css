@@ -21,3 +21,14 @@
     background-color: var(--consalud-gray-100);
   }
 }
+
+body {
+  font-family: var(--consalud-font-family);
+  font-size: var(--consalud-font-size-base);
+  color: var(--consalud-foreground);
+  background-color: var(--consalud-background);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}

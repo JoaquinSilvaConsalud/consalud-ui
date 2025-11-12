@@ -3,6 +3,25 @@
   width: 100%;
 }
 
+.size-16 {
+  width: 16px;
+  height: 16;
+}
+.size-32 {
+  width: 32px;
+  height: 32px;
+}
+
+.size-64 {
+  width: 64px;
+  height: 64px;
+}
+
+.size-128 {
+  width: 128px;
+  height: 128px;
+}
+
 .max-w-container {
   max-width: var(--consalud-max-width);
   width: calc(100% - var(--consalud-spacing-2xl));
@@ -64,4 +83,23 @@
   .md\:block {
     display: block;
   }
+}
+
+.flex {
+  display: flex;
+}
+.flex-col {
+  flex-direction: column;
+}
+.items-center {
+  align-items: center;
+}
+.justify-center {
+  justify-content: center;
+}
+.gap-md {
+  gap: var(--consalud-spacing-md);
+}
+.gap-lg {
+  gap: var(--consalud-spacing-lg);
 }

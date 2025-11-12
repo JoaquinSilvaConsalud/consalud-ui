@@ -1,0 +1,10 @@
+const Direccion = (props: React.SVGProps<SVGSVGElement>) => {
+    return <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+        <path d="M13.1851 7.4079C13.8396 8.06242 13.8396 9.1236 13.1851 9.77812C12.5306 10.4326 11.4694 10.4326 10.8149 9.77812C10.1604 9.1236 10.1604 8.06242 10.8149 7.4079C11.4694 6.75338 12.5306 6.75338 13.1851 7.4079" stroke="var(--consalud-primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M17.485 8.38V8.38C17.485 9.87 16.823 11.282 15.679 12.236L13.88 13.735C13.163 14.333 12.627 15.118 12.332 16.004L12 17L11.668 16.004C11.373 15.119 10.837 14.333 10.12 13.735L8.321 12.236C7.176 11.282 6.515 9.87 6.515 8.38V8.38V8.408C6.515 4.986 9.349 3 12 3C14.651 3 17.485 4.986 17.485 8.408" stroke="var(--consalud-primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M7 14.598C4.591 15.225 3 16.288 3 17.5C3 19.433 7.029 21 12 21C16.971 21 21 19.433 21 17.5C21 16.288 19.409 15.224 17 14.598" stroke="var(--consalud-primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+
+}
+
+export default Direccion;
